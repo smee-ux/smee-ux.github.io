@@ -1,0 +1,30 @@
+const myImage = document.querySelector("img");
+
+myImage.addEventListener("click", () => {
+    const mySrc = myImage.getAttribute("src");
+    if (mySrc === "images/Abyssinian-1200x1228.jpg") {
+        myImage.setAttribute("src", "images/artworks-000063413164-7fjwmv-t1080x1080.jpg");
+    } else {
+        myImage.setAttribute("src", "images/Abyssinian-1200x1228.jpg");
+    }
+});
+
+let myButton = document.querySelector("button");
+let myHeading = document.querySelector("h1");
+
+function setUserName() {
+    const myName = prompt("Please enter your name.");
+    localStorage.setItem("name", myName);
+    myHeading.textContent = `Cat gangsters greeting to you ${myName}`;
+}
+
+if (!localStorage.getItem("name")) {
+    setUserName();
+} else {
+    const storedName = localStorage.getItem("name");
+    myHeading.textContent = `Welcome back, ${storedName}`;
+}
+
+myButton.addEventListener("click", ()=> {
+    setUserName();
+})
